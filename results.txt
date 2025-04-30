@@ -1,0 +1,255 @@
+test_size
+random_state
+
+kernel-> tipo
+
+----------
+
+kernel lineal
+
+---
+test_size: 0.2
+---
+
+Matriz de confusi n:
+[[196  18]
+ [ 21 570]]
+
+
+Reporte de clasificación:
+              precision    recall  f1-score   support
+
+           0       0.90      0.92      0.91       214
+           1       0.97      0.96      0.97       591
+
+    accuracy                           0.95       805
+   macro avg       0.94      0.94      0.94       805
+weighted avg       0.95      0.95      0.95       805
+
+---
+test_size: 0.4
+---
+
+Matriz de confusi n:
+[[ 389   32]
+ [  45 1147]]
+
+Reporte de clasificaci n:
+              precision    recall  f1-score   support
+
+           0       0.90      0.92      0.91       421
+           1       0.97      0.96      0.97      1192
+
+    accuracy                           0.95      1613
+   macro avg       0.93      0.94      0.94      1613
+weighted avg       0.95      0.95      0.95      1613
+
+---
+test_size: 0.6
+---
+
+Matriz de confusi n:
+[[ 562   55]
+ [  62 1666]]
+
+Reporte de clasificaci n:
+              precision    recall  f1-score   support
+
+           0       0.90      0.91      0.91       617
+           1       0.97      0.96      0.97      1728
+
+    accuracy                           0.95      2345
+   macro avg       0.93      0.94      0.94      2345
+weighted avg       0.95      0.95      0.95      2345
+
+---
+test_size: 0.8
+---
+
+Matriz de confusi n:
+[[ 567   49]
+ [  45 1764]]
+
+Reporte de clasificaci n:
+              precision    recall  f1-score   support
+
+           0       0.93      0.92      0.92       616
+           1       0.97      0.98      0.97      1809
+
+    accuracy                           0.96      2425
+   macro avg       0.95      0.95      0.95      2425
+weighted avg       0.96      0.96      0.96      2425
+________________________________________________________
+
+kernel sigmoid
+
+--
+test_size: 0.2
+---
+
+Matriz de confusi n:
+[[142  75]
+ [ 49 561]]
+
+Reporte de clasificaci n:
+              precision    recall  f1-score   support
+
+           0       0.74      0.65      0.70       217
+           1       0.88      0.92      0.90       610
+
+    accuracy                           0.85       827
+   macro avg       0.81      0.79      0.80       827
+weighted avg       0.85      0.85      0.85       827
+
+---
+test_size: 0.4
+---
+
+Matriz de confusi n:
+[[ 366   53]
+ [  65 1068]]
+
+Reporte de clasificaci n:
+              precision    recall  f1-score   support
+
+           0       0.85      0.87      0.86       419
+           1       0.95      0.94      0.95      1133
+
+    accuracy                           0.92      1552
+   macro avg       0.90      0.91      0.90      1552
+weighted avg       0.92      0.92      0.92      1552
+
+---
+test_size: 0.6
+---
+
+Matriz de confusi n:
+[[ 490  117]
+ [  97 1699]]
+
+Reporte de clasificaci n:
+              precision    recall  f1-score   support
+
+           0       0.83      0.81      0.82       607
+           1       0.94      0.95      0.94      1796
+
+    accuracy                           0.91      2403
+   macro avg       0.89      0.88      0.88      2403
+weighted avg       0.91      0.91      0.91      2403
+
+---
+test_size: 0.8
+---
+
+Matriz de confusi n:
+[[ 681  147]
+ [ 104 2280]]
+
+Reporte de clasificaci n:
+              precision    recall  f1-score   support
+
+           0       0.87      0.82      0.84       828
+           1       0.94      0.96      0.95      2384
+
+    accuracy                           0.92      3212
+   macro avg       0.90      0.89      0.90      3212
+weighted avg       0.92      0.92      0.92      3212
+
+___________________________________________________________________________
+
+kernel poly
+
+---
+test_size: 0.2
+---
+
+Matriz de confusi n:
+[[189  15]
+ [  0 617]]
+
+Reporte de clasificaci n:
+              precision    recall  f1-score   support
+
+           0       1.00      0.93      0.96       204
+           1       0.98      1.00      0.99       617
+
+    accuracy                           0.98       821
+   macro avg       0.99      0.96      0.97       821
+weighted avg       0.98      0.98      0.98       821
+
+---
+test_size: 0.4
+---
+
+Matriz de confusi n:
+[[ 380   31]
+ [   8 1174]]
+
+Reporte de clasificaci n:
+              precision    recall  f1-score   support
+
+           0       0.98      0.92      0.95       411
+           1       0.97      0.99      0.98      1182
+
+    accuracy                           0.98      1593
+   macro avg       0.98      0.96      0.97      1593
+weighted avg       0.98      0.98      0.98      1593
+
+---
+test_size: 0.6
+---
+
+Matriz de confusi n:
+[[ 573   46]
+ [  15 1861]]
+
+Reporte de clasificaci n:
+              precision    recall  f1-score   support
+
+           0       0.97      0.93      0.95       619
+           1       0.98      0.99      0.98      1876
+
+    accuracy                           0.98      2495
+   macro avg       0.98      0.96      0.97      2495
+weighted avg       0.98      0.98      0.98      2495
+
+
+---
+test_size: 0.8
+---
+
+Matriz de confusi n:
+[[ 585   58]
+ [  11 1770]]
+
+Reporte de clasificaci n:
+              precision    recall  f1-score   support
+
+           0       0.98      0.91      0.94       643
+           1       0.97      0.99      0.98      1781
+
+    accuracy                           0.97      2424
+   macro avg       0.97      0.95      0.96      2424
+weighted avg       0.97      0.97      0.97      2424
+
+______________________________________________________________________
+
+kernel rbf
+
+---
+test_size: 0.2
+---
+
+Matriz de confusi n:
+[[ 585   58]
+ [  11 1770]]
+
+Reporte de clasificaci n:
+              precision    recall  f1-score   support
+
+           0       0.98      0.91      0.94       643
+           1       0.97      0.99      0.98      1781
+
+    accuracy                           0.97      2424
+   macro avg       0.97      0.95      0.96      2424
+weighted avg       0.97      0.97      0.97      2424
