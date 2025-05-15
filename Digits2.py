@@ -5,11 +5,13 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix, roc_curve, auc
 from sklearn.svm import SVC
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import LogisticRegression, LinearRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.neural_network import MLPClassifier
 
 def plot_roc_curve(y_true, y_scores, name=None):
     print(f"Generando curva ROC para {name}...")
@@ -17,7 +19,7 @@ def plot_roc_curve(y_true, y_scores, name=None):
     roc_auc = auc(fpr, tpr)
 
     plt.figure(figsize=(8, 6))
-    plt.plot(fpr, tpr, color='darkorange', lw=2, label=f'AUC = {roc_auc:.2f}')
+    plt.plot(fpr, tpr, color='darkorange', lw=2, label=f'AUC = {roc_auc:.4f}')
     plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])
@@ -72,7 +74,10 @@ models = {
     "Decision Tree": DecisionTreeClassifier(),
     "KNN": KNeighborsClassifier(),
     "Naive Bayes": GaussianNB(),
-    "Random Forest": RandomForestClassifier()
+    "Random Forest": RandomForestClassifier(),
+    "LDA": LinearDiscriminantAnalysis(),
+    "Linear Regression": LinearRegression(),
+    "MLP": MLPClassifier(max_iter=1000)
 }
 
 # =========================
@@ -84,15 +89,19 @@ cmresults = []
 for name, clf in models.items():
     print(f"\nEntrenando modelo: {name}")
     clf.fit(X_train, y_train)
-    y_pred = clf.predict(X_test)
 
-    # Obtener puntuaciones para curva ROC
-    if hasattr(clf, "predict_proba"):
-        y_scores = clf.predict_proba(X_test)[:, 1]
-    elif hasattr(clf, "decision_function"):
-        y_scores = clf.decision_function(X_test)
+    # Predicción especial para regresión lineal
+    if name == "Linear Regression":
+        y_scores = clf.predict(X_test)
+        y_pred = (y_scores >= 0.5).astype(int)
     else:
-        y_scores = y_pred  # fallback no ideal
+        y_pred = clf.predict(X_test)
+        if hasattr(clf, "predict_proba"):
+            y_scores = clf.predict_proba(X_test)[:, 1]
+        elif hasattr(clf, "decision_function"):
+            y_scores = clf.decision_function(X_test)
+        else:
+            y_scores = y_pred  # fallback
 
     report = classification_report(y_test, y_pred, output_dict=True)
     cm = confusion_matrix(y_test, y_pred)
@@ -150,3 +159,18 @@ for name, cm in cmresults:
     plt.tight_layout()
     plt.savefig(f'confusion_matrix_{name}.png')
     plt.close()
+
+
+# Cargar resultados
+df_results = pd.read_csv("results.csv")
+
+# Crear gráfico de barras ordenado por accuracy
+plt.figure(figsize=(12, 8))
+df_sorted = df_results.sort_values("Accuracy", ascending=True)
+plt.barh(df_sorted["Model"], df_sorted["Accuracy"])
+plt.xlabel("Accuracy")
+plt.title("Comparación de Accuracy entre Modelos")
+plt.grid(True)
+plt.tight_layout()
+plt.savefig("model_accuracy_comparison.png")
+plt.show()
